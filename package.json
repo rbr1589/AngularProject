@@ -1,0 +1,16 @@
+{
+  "name": "HTML5Application",
+  "version": "1.0.0",
+  "keywords": [
+    "util",
+    "functional",
+    "server",
+    "client",
+    "browser"
+  ],
+  "author": "rrathnakararao",
+  "contributors": [],
+  "dependencies": {
+    "mongodb": "^2.2.30"
+  }
+}

@@ -1,0 +1,29 @@
+<nav class="navbar navbar-inverse" role="navigation">
+                
+                
+                <!--Navigation buttons-->
+                <ul class="nav navbar-nav">
+                    <li><a ui-sref="main.home" ng-if="isUserLoggedIn">Home</a></li>
+                    <li><a ui-sref="main.about" ng-if="isUserLoggedIn">About</a></li>
+                </ul>
+                
+                
+                
+                <!--Login Logout buttons-->
+		<div style="color: white" class="logInButtons pull-right" ng-if="isUserLoggedIn">{{lc.userId}} logged in</div>
+		<div class="logInButtons">
+                    <span><button style="color: green" class="pull-right" ng-click="signIn()" ng-if="!isUserLoggedIn">Sign In</button>
+			<button style="color: green" class="pull-right" ng-click="signUp()" ng-if="!isUserLoggedIn">Sign Up</button>
+			<button style="color: green" class="pull-right" ng-click="signOut()" ng-if="isUserLoggedIn">Sign Out</button>
+                        </span>
+		</div>
+                <div>
+                        <div style="color: white" ng-if="singUpClicked || singInClicked">User Id : <input type="text" ng-model="lc.userId"/></div>
+                        <div style="color: white" ng-if="singUpClicked || singInClicked">Password :  <input type="password" ng-model="lc.password"/></div>
+                        <div style="color: white" ng-if="singUpClicked && !singInClicked">Retype Password : <input type="password" ng-model="lc.matchPassword"/></div>
+                        <br/><br/>
+			<button style="color: green" ng-if="singUpClicked || singInClicked" ng-click="logIn()">Submit</button>
+			<button style="color: green" ng-if="singUpClicked || singInClicked"	 ng-click="cancel()">Cancel</button>
+		</div>
+            </nav>
+<div ui-view></div>
