@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 // Connection URL
 
 //Pointing to the mongoDB
-var url = 'mongodb://172.31.1.169:27017/data';
+var url = 'mongodb://127.0.0.1:27017/data';
 
 var mongoose = require('mongoose');
 //assert is used to compare values and throw error based on the comparison
