@@ -22,77 +22,46 @@ app.use(bodyParser.json());
 // Connection URL
 
 //Pointing to the mongoDB
-var url = 'mongodb://127.0.0.1:27017/data';
+var url = 'mongodb://localhost:27017/userData';
 
 var mongoose = require('mongoose');
 //assert is used to compare values and throw error based on the comparison
 var assert = require('assert');
 
 
+mongoose.Promise = require('bluebird');
 
+mongoose.connect(url, function(err) {
+    if (err) throw err;
+    console.log('Successfully connected to MongoDB');
+});
 
-
-
-mongoose.connect('mongodb://localhost/userData', {
-  useMongoClient: true,
-  /* other options */
-}).then(function(db){
-//    console.log(db);
-    var userDataSchema = mongoose.Schema({
+var userDataSchema = new mongoose.Schema({
         userName: String,
         password: String
     });
-    var userDetail = db.model('userDetail', userDataSchema);
-    
-//    var checkUser = new userDataSchema({userName:"Rakshith"});
-    
-    
-    userDetail.find(function (err, kittens) {
-        if (err)
-            return console.error(err);
-        console.log(kittens);
-    })
-    
-    
-},function(err){
-console.log(err);
-});
+
+//userDetail.findOne({name:"Rakshith"},function(err, docs){
+//    if(err)
+//        throw err;
+//    console.log(docs);
+//});
 
 
+//assert.equal(query.exec().constructor, require('bluebird'));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var userDetailsSchema = mongoose.Schema({
-    "userName" : String,
-    "password" : String
-});
+//var userDetailsSchema = mongoose.Schema({
+//    "userName" : String,
+//    "password" : String
+//});
 
 //finds index.html file in the below folder and returns it on pointing to IP:port
 app.get('/#', function (req, res) {
     res.sendFile(__dirname + '/public_html/public');
 });
 
-app.post('/logIn', function (req, res) {
-
-    var userName = req.body.userObj.userName;
-    var password = req.body.userObj.password;
-});
+//app.post('/logIn', function (req, res) {
+//
+//    var userName = req.body.userObj.userName;
+//    var password = req.body.userObj.password;
+//});
